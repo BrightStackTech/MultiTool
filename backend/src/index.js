@@ -18,6 +18,10 @@ const authRoutes = require('./routes/auth.routes');
 dotenv.config();
 
 const app = express();
+
+app.set('trust proxy', true);
+
+
 const PORT = process.env.PORT || 8000;
 
 // CORS Configuration - Use a simple configuration first
@@ -86,7 +90,7 @@ const startServer = async () => {
     // Connect to MongoDB
     console.log('Connecting to MongoDB...');
     try {
-        await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/multitool');
+        await mongoose.connect(process.env.MONGODB_URI);
         console.log('✅ Connected to MongoDB');
     } catch (err) {
         console.error('❌ Could not connect to MongoDB', err);
