@@ -13,7 +13,7 @@ const PdfMerger: React.FC = () => {
 
     // Check if user is logged in but has file storage disabled
     useEffect(() => {
-        if (isAuthenticated && user && user.saveFilesToDashboard === false) {
+        if (isAuthenticated && user && user.saveFilesToDashboard !== true) {
             setShowStorageDialog(true);
         }
     }, [isAuthenticated, user]);
